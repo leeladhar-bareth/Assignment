@@ -102,8 +102,3 @@ POST /api/auth/login
 - Multer
 - Cloudinary
 - uuid
-
-## Note
-
-- Do not upload `.env` or `node_modules`
-- Use `.env.example` for reference
