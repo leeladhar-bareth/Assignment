@@ -21,7 +21,8 @@ E-commerce dataset aggregations using MongoDB pipeline operators (`$match`, `$pr
 
 | File | Description |
 |------|-------------|
-| [QUESTIONS_AND_ANSWERS.md](./QUESTIONS_AND_ANSWERS.md) | All 25 questions, queries, JSON outputs & tables |
+| [QUESTIONS_AND_ANSWERS.md](./QUESTIONS_AND_ANSWERS.md) | Q1–Q12: question, query, JSON output, table |
+| [QUESTIONS_AND_ANSWERS_Q13_Q25.md](./QUESTIONS_AND_ANSWERS_Q13_Q25.md) | Q13–Q25: question, query, JSON output, table |
 
 ## Operators covered
 
