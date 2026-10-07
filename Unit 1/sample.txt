@@ -1,4 +1,4 @@
-Node.js is awesome.
-Node.js is powerful.
-Node.js is easy to learn.
-JavaScript and Node.js are popular.
+Programming with JavaScript is fun.
+JavaScript helps build interactive websites.
+Learning JavaScript improves problem solving skills.
+Many developers love JavaScript for its versatility.

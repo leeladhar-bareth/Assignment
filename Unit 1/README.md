@@ -1,52 +1,49 @@
-# Node.js CLI — Word Frequency Analyzer
+# Word Frequency Counter — Node.js CLI Tool
 
-## 📌 Project Description
+## Overview
 
-This project is a Command Line Interface (CLI) application developed using **Node.js**. The application reads a text file provided through the command line and counts the frequency of each word present in the file.
+A simple command-line utility built with Node.js that analyzes any text file and reports how often each word appears. All words are normalized to lowercase so that variations in capitalization are treated as identical.
 
-The application converts words to lowercase so that uppercase and lowercase words are treated as the same.
-
-For example:
+Example:
 
 ```text
-Node, NODE, node
+Hello, HELLO, hello
 ```
 
-are counted as:
+Results in:
 
 ```text
-node : 3
+hello : 3
 ```
 
-The application also handles basic errors such as a missing filename, file not found, and an empty file.
+The program also gracefully handles common issues such as a missing argument, a non-existent file, or an empty input file.
 
 ---
 
-## 🚀 Features
+## Key Capabilities
 
-* Accepts filename using `process.argv`
-* Reads file using Node.js `fs/promises`
-* Counts the frequency of each word
-* Converts words to lowercase
-* Handles punctuation
-* Displays word frequency in the terminal
-* Handles missing filename
-* Handles file-not-found error
-* Handles empty files
-* Uses modern ES Module syntax
-
----
-
-## 🛠️ Technologies Used
-
-* **Node.js**
-* **JavaScript**
-* **File System (`fs/promises`)**
-* **ES Modules**
+* Accepts the target file name via command-line arguments (`process.argv`)
+* Reads the file asynchronously with `fs/promises`
+* Counts occurrences of every distinct word
+* Normalizes text to lowercase
+* Strips punctuation and special characters
+* Prints a clean frequency report in the terminal
+* Validates that a filename was supplied
+* Detects and reports missing files
+* Detects and reports empty files
+* Written with modern ES Module syntax
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
+
+* Node.js
+* JavaScript (ES Modules)
+* Node.js File System API (`fs/promises`)
+
+---
+
+## Directory Layout
 
 ```text
 Unit 1/
@@ -59,17 +56,17 @@ Unit 1/
 
 ---
 
-## ⚙️ Installation
+## Setup
 
-Make sure **Node.js** is installed on your computer.
+Ensure Node.js is installed on your system.
 
-Check Node.js version:
+Verify the installation:
 
 ```bash
 node --version
 ```
 
-The `package.json` already contains:
+The included `package.json` already sets the module type:
 
 ```json
 {
@@ -79,15 +76,15 @@ The `package.json` already contains:
 
 ---
 
-## ▶️ How to Run
+## Running the Application
 
-Use the following command:
+Execute the tool with:
 
 ```bash
 node app.js <filename>
 ```
 
-### Example
+### Quick Example
 
 ```bash
 node app.js sample.txt
@@ -95,88 +92,84 @@ node app.js sample.txt
 
 ---
 
-## 📄 Sample Input
+## Sample Input File
 
-The `sample.txt` file contains:
+Contents of `sample.txt`:
 
 ```text
-Node.js is awesome.
-Node.js is powerful.
-Node.js is easy to learn.
-JavaScript and Node.js are popular.
+Programming with JavaScript is fun.
+JavaScript helps build interactive websites.
+Learning JavaScript improves problem solving skills.
+Many developers love JavaScript for its versatility.
 ```
 
 ---
 
-## 💻 Sample Output
-
-Run:
-
-```bash
-node app.js sample.txt
-```
-
-Output (after converting to lowercase):
-
-```text
-{
-  node: 4,
-  js: 4,
-  is: 3,
-  awesome: 1,
-  powerful: 1,
-  easy: 1,
-  to: 1,
-  learn: 1,
-  javascript: 1,
-  and: 1,
-  are: 1,
-  popular: 1
-}
-```
-
----
-
-## ❌ Error Handling
-
-### 1. Filename Not Provided
+## Expected Output
 
 Command:
 
 ```bash
-node app.js
+node app.js sample.txt
 ```
 
-Output:
+Result:
+
+```text
+Word Frequency:
+
+programming : 1
+with : 1
+javascript : 4
+is : 1
+fun : 1
+helps : 1
+build : 1
+interactive : 1
+websites : 1
+learning : 1
+improves : 1
+problem : 1
+solving : 1
+skills : 1
+many : 1
+developers : 1
+love : 1
+for : 1
+its : 1
+versatility : 1
+```
+
+---
+
+## Error Messages
+
+### Missing filename
+
+```bash
+node app.js
+```
 
 ```text
 Error: Please provide a filename.
 Usage: node app.js <filename>
 ```
 
-### 2. File Not Found
-
-Command:
+### File does not exist
 
 ```bash
-node app.js abc.txt
+node app.js missing.txt
 ```
-
-Output:
 
 ```text
-Error: File "abc.txt" not found.
+Error: File "missing.txt" not found.
 ```
 
-### 3. Empty File
-
-If the given file is empty:
+### Empty file
 
 ```bash
 node app.js empty.txt
 ```
-
-Output:
 
 ```text
 Error: The file is empty.
@@ -184,41 +177,33 @@ Error: The file is empty.
 
 ---
 
-## 🔍 How It Works
+## Internal Workflow
 
-The application follows these steps:
-
-1. Gets the filename from `process.argv`.
-2. Reads the file using `fs.readFile()`.
-3. Checks whether the file is empty.
-4. Converts the file content to lowercase.
-5. Splits the content into individual words.
-6. Stores each word and its count in an object.
-7. Displays the word frequency in the terminal.
+1. Retrieve the filename from `process.argv[2]`.
+2. Attempt to read the file using `fs.readFile()`.
+3. Reject empty content.
+4. Convert the entire text to lowercase.
+5. Split the text into words using a regular expression that removes non-word characters.
+6. Maintain a frequency map (plain object).
+7. Print each word and its count.
 
 ---
 
-## 📌 Main Concepts Used
+## Core Concepts Demonstrated
 
-### `process.argv`
-
-Used to receive the filename from the command line.
+### Command-line arguments
 
 ```javascript
 const filePath = process.argv[2]
 ```
 
-### `fs/promises`
-
-Used to read the file asynchronously.
+### Asynchronous file reading
 
 ```javascript
 import fs from "node:fs/promises"
 ```
 
-### Word Splitting
-
-The file content is converted into an array of words using:
+### Word extraction
 
 ```javascript
 fileContent
@@ -227,9 +212,7 @@ fileContent
     .filter((word) => word)
 ```
 
-### Word Counting
-
-An object is used to store the frequency of each word:
+### Frequency tracking
 
 ```javascript
 const wordsCount = {}
@@ -237,26 +220,25 @@ const wordsCount = {}
 
 ---
 
-## 🎯 Objective
+## Learning Goals
 
-The main objective of this project is to demonstrate the use of:
+This assignment practices:
 
-* Node.js CLI
-* Command-line arguments
-* File handling
-* String manipulation
-* Regular expressions
-* Objects
-* Loops
-* Error handling
-* ES Modules
+* Building a Node.js CLI application
+* Working with process arguments
+* Reading files from disk
+* String processing and regular expressions
+* Using objects as hash maps
+* Iteration with `forEach` / `for...of`
+* Proper error handling
+* ES Module imports
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Leeladhar Bareth**
 
-### Project
+### Project Title
 
-**Node.js CLI — Word Frequency Analyzer**
+**Word Frequency Counter — Node.js CLI Tool**
