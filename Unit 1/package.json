@@ -1,0 +1,14 @@
+{
+  "name": "unit-1",
+  "version": "1.0.0",
+  "description": "Node.js CLI Word Frequency Analyzer",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js sample.txt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["nodejs", "cli", "word-frequency"],
+  "author": "Leeladhar Bareth",
+  "license": "ISC",
+  "type": "module"
+}

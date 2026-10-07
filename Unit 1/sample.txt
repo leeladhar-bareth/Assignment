@@ -1,0 +1,4 @@
+Node.js is awesome.
+Node.js is powerful.
+Node.js is easy to learn.
+JavaScript and Node.js are popular.
